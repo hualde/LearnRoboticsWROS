@@ -1,0 +1,1 @@
+Invoking command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/robotiq_controllers': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake --build /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/robotiq_controllers -- -j16 -l16

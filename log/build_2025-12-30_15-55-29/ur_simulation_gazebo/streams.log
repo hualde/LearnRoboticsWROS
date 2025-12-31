@@ -1,0 +1,27 @@
+[0.005s] Invoking command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/ur_simulation_gazebo': AMENT_PREFIX_PATH=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_description:/home/hualde/misCosas/ros2_ws/install/ur_simulation_gazebo:/home/hualde/misCosas/ros2_ws/install/ur_robotiq_bringup:/home/hualde/misCosas/ros2_ws/install/ur_robotiq_description:/home/hualde/misCosas/ros2_ws/install/ur_custom_simulation:/home/hualde/misCosas/ros2_ws/install/manipulator_moveit_config:/home/hualde/misCosas/ros2_ws/install/manipulator:/home/hualde/misCosas/ros2_ws/install/ur_description:/home/hualde/misCosas/ros2_ws/install/serial:/home/hualde/misCosas/ros2_ws/install/my_robot_bringup:/home/hualde/misCosas/ros2_ws/install/my_robot_description:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo -DCMAKE_INSTALL_PREFIX=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo
+[0.031s] -- The C compiler identification is GNU 11.4.0
+[0.063s] -- The CXX compiler identification is GNU 11.4.0
+[0.068s] -- Detecting C compiler ABI info
+[0.101s] -- Detecting C compiler ABI info - done
+[0.105s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.105s] -- Detecting C compile features
+[0.105s] -- Detecting C compile features - done
+[0.107s] -- Detecting CXX compiler ABI info
+[0.144s] -- Detecting CXX compiler ABI info - done
+[0.148s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.148s] -- Detecting CXX compile features
+[0.148s] -- Detecting CXX compile features - done
+[0.151s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.319s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.376s] -- Found launch_testing_ament_cmake: 1.0.13 (/opt/ros/humble/share/launch_testing_ament_cmake/cmake)
+[0.378s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[0.390s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[0.398s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[0.398s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.398s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[0.398s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[0.410s] -- Found PythonExtra: .so  
+[0.412s] -- Found ament_cmake_pytest: 1.3.12 (/opt/ros/humble/share/ament_cmake_pytest/cmake)
+[0.444s] -- Configuring done
+[0.446s] -- Generating done
+[0.447s] -- Build files have been written to: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/ur_simulation_gazebo

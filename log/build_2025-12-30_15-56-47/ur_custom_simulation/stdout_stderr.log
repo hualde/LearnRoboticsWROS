@@ -1,0 +1,26 @@
+-- Install configuration: ""
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//launch
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//launch/spawn_ur_robot.launch.py
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//config
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//config/ur_controllers.yaml
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//config/initial_positions.yaml
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//urdf
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//urdf/.gitkeep
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//urdf/ur_with_accessories.urdf.xacro
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//meshes
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation//meshes/.gitkeep
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ament_index/resource_index/package_run_dependencies/ur_custom_simulation
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ament_index/resource_index/parent_prefix_path/ur_custom_simulation
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/environment/ament_prefix_path.sh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/environment/ament_prefix_path.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/environment/path.sh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/environment/path.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/local_setup.bash
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/local_setup.sh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/local_setup.zsh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/local_setup.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/package.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ament_index/resource_index/packages/ur_custom_simulation
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/cmake/ur_custom_simulationConfig.cmake
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/cmake/ur_custom_simulationConfig-version.cmake
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation/share/ur_custom_simulation/package.xml

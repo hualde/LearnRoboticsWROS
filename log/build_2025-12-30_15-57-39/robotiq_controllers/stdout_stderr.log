@@ -1,0 +1,17 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/robotiq_controllers.dir/src/robotiq_activation_controller.cpp.o[0m
+[01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:[m[K In member function ‘[01m[Kbool robotiq_controllers::RobotiqActivationController::reactivateGripper(std_srvs::srv::Trigger_Request_<std::allocator<void> >::SharedPtr, std_srvs::srv::Trigger_Response_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:108:77:[m[K [01;31m[Kerror: [m[Kvoid value not ignored as it ought to be
+  108 |   resp->success = [01;31m[Kcommand_interfaces_[REACTIVATE_GRIPPER_RESPONSE].set_value(ASYNC_WAITING)[m[K;
+      |                   [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:109:73:[m[K [01;31m[Kerror: [m[Kvoid value not ignored as it ought to be
+  109 |   resp->success &= [01;31m[Kcommand_interfaces_[REACTIVATE_GRIPPER_CMD].set_value(1.0)[m[K;
+      |                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:113:79:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<hardware_interface::LoanedCommandInterface>, hardware_interface::LoanedCommandInterface>::value_type[m[K’ {aka ‘[01m[Kclass hardware_interface::LoanedCommandInterface[m[K’} has no member named ‘[01m[Kget_optional[m[K’
+  113 |     const auto maybe_value = command_interfaces_[REACTIVATE_GRIPPER_RESPONSE].[01;31m[Kget_optional[m[K();
+      |                                                                               [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:122:87:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<hardware_interface::LoanedCommandInterface>, hardware_interface::LoanedCommandInterface>::value_type[m[K’ {aka ‘[01m[Kclass hardware_interface::LoanedCommandInterface[m[K’} has no member named ‘[01m[Kget_optional[m[K’
+  122 |   resp->success &= static_cast<bool>(command_interfaces_[REACTIVATE_GRIPPER_RESPONSE].[01;31m[Kget_optional[m[K().value_or(false));
+      |                                                                                       [01;31m[K^~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/robotiq_controllers.dir/build.make:76: CMakeFiles/robotiq_controllers.dir/src/robotiq_activation_controller.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/robotiq_controllers.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

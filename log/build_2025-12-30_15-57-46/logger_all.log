@@ -1,0 +1,232 @@
+[0.070s] [34mcolcon[0m [1;30mDEBUG[0m [32mCommand line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'serial'][0m
+[0.070s] [34mcolcon[0m [1;30mDEBUG[0m [32mParsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['serial'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7bdd2d64fcd0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7bdd2d798c10>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7bdd2d798c10>>, mixin_verb=('build',))[0m
+[0.092s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(colcon_meta) check parameters
+[0.093s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) check parameters
+[0.093s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) check parameters
+[0.093s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) check parameters
+[0.093s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(colcon_meta) discover
+[0.093s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) discover
+[0.093s] [34mcolcon.colcon_core.package_discovery[0m [1;30mINFO[0m Crawling recursively for packages in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS'
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ignore'
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ignore_ament_install'
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['colcon_pkg']
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'colcon_pkg'
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['colcon_meta']
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'colcon_meta'
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['ros']
+[0.093s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ros'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['cmake', 'python']
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'cmake'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'python'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['python_setup_py']
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'python_setup_py'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extensions ['ignore', 'ignore_ament_install']
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extension 'ignore'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extension 'ignore_ament_install'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extensions ['colcon_pkg']
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extension 'colcon_pkg'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extensions ['colcon_meta']
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extension 'colcon_meta'
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extensions ['ros']
+[0.101s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Description) by extension 'ros'
+[0.103s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'Universal_Robots_ROS2_Description' with type 'ros.ament_cmake' and name 'ur_description'[0m
+[0.103s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extensions ['ignore', 'ignore_ament_install']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'ignore'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'ignore_ament_install'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extensions ['colcon_pkg']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'colcon_pkg'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extensions ['colcon_meta']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'colcon_meta'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extensions ['ros']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'ros'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extensions ['cmake', 'python']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'cmake'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'python'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extensions ['python_setup_py']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation) by extension 'python_setup_py'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extensions ['ignore', 'ignore_ament_install']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extension 'ignore'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extension 'ignore_ament_install'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extensions ['colcon_pkg']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extension 'colcon_pkg'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extensions ['colcon_meta']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extension 'colcon_meta'
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extensions ['ros']
+[0.104s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo) by extension 'ros'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo' with type 'ros.ament_cmake' and name 'ur_simulation_gazebo'[0m
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) by extension 'ignore'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) ignored
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) by extension 'ignore'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) ignored
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) by extension 'ignore'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) ignored
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extensions ['ignore', 'ignore_ament_install']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'ignore'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'ignore_ament_install'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extensions ['colcon_pkg']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'colcon_pkg'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extensions ['colcon_meta']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'colcon_meta'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extensions ['ros']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'ros'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extensions ['cmake', 'python']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'cmake'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'python'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extensions ['python_setup_py']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper) by extension 'python_setup_py'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extensions ['ignore', 'ignore_ament_install']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extension 'ignore'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extension 'ignore_ament_install'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extensions ['colcon_pkg']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extension 'colcon_pkg'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extensions ['colcon_meta']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extension 'colcon_meta'
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extensions ['ros']
+[0.105s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_controllers) by extension 'ros'
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'ros2_robotiq_gripper/robotiq_controllers' with type 'ros.ament_cmake' and name 'robotiq_controllers'[0m
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extensions ['ignore', 'ignore_ament_install']
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extension 'ignore'
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extension 'ignore_ament_install'
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extensions ['colcon_pkg']
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extension 'colcon_pkg'
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extensions ['colcon_meta']
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extension 'colcon_meta'
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extensions ['ros']
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_description) by extension 'ros'
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'ros2_robotiq_gripper/robotiq_description' with type 'ros.ament_cmake' and name 'robotiq_description'[0m
+[0.106s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extensions ['ignore', 'ignore_ament_install']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extension 'ignore'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extension 'ignore_ament_install'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extensions ['colcon_pkg']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extension 'colcon_pkg'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extensions ['colcon_meta']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extension 'colcon_meta'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extensions ['ros']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_driver) by extension 'ros'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'ros2_robotiq_gripper/robotiq_driver' with type 'ros.ament_cmake' and name 'robotiq_driver'[0m
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extensions ['ignore', 'ignore_ament_install']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extension 'ignore'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extension 'ignore_ament_install'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extensions ['colcon_pkg']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extension 'colcon_pkg'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extensions ['colcon_meta']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extension 'colcon_meta'
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extensions ['ros']
+[0.107s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ros2_robotiq_gripper/robotiq_hardware_tests) by extension 'ros'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'ros2_robotiq_gripper/robotiq_hardware_tests' with type 'ros.ament_cmake' and name 'robotiq_hardware_tests'[0m
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extensions ['ignore', 'ignore_ament_install']
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extension 'ignore'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extension 'ignore_ament_install'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extensions ['colcon_pkg']
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extension 'colcon_pkg'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extensions ['colcon_meta']
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extension 'colcon_meta'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extensions ['ros']
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(serial) by extension 'ros'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'serial' with type 'ros.ament_cmake' and name 'serial'[0m
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extensions ['ignore', 'ignore_ament_install']
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extension 'ignore'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extension 'ignore_ament_install'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extensions ['colcon_pkg']
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extension 'colcon_pkg'
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extensions ['colcon_meta']
+[0.108s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extension 'colcon_meta'
+[0.109s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extensions ['ros']
+[0.109s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(ur_custom_simulation) by extension 'ros'
+[0.109s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'ur_custom_simulation' with type 'ros.ament_cmake' and name 'ur_custom_simulation'[0m
+[0.109s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) using defaults
+[0.109s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) discover
+[0.109s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) using defaults
+[0.109s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) discover
+[0.109s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) using defaults
+[0.119s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'robotiq_controllers' in 'ros2_robotiq_gripper/robotiq_controllers'
+[0.119s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'robotiq_description' in 'ros2_robotiq_gripper/robotiq_description'
+[0.119s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'ur_description' in 'Universal_Robots_ROS2_Description'
+[0.119s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'robotiq_driver' in 'ros2_robotiq_gripper/robotiq_driver'
+[0.119s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'ur_custom_simulation' in 'ur_custom_simulation'
+[0.119s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'ur_simulation_gazebo' in 'Universal_Robots_ROS2_Gazebo_Simulation/ur_simulation_gazebo'
+[0.119s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'robotiq_hardware_tests' in 'ros2_robotiq_gripper/robotiq_hardware_tests'
+[0.119s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(prefix_path) check parameters
+[0.119s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(prefix_path) discover
+[0.120s] [34mcolcon.colcon_installed_package_information.package_discovery[0m [1;30mDEBUG[0m [32mFound 12 installed packages in /home/hualde/misCosas/ros2_ws/install[0m
+[0.121s] [34mcolcon.colcon_installed_package_information.package_discovery[0m [1;30mDEBUG[0m [32mFound 413 installed packages in /opt/ros/humble[0m
+[0.123s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(prefix_path) using defaults
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'cmake_args' from command line to 'None'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'cmake_target' from command line to 'None'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'cmake_clean_cache' from command line to 'False'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'cmake_clean_first' from command line to 'False'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'cmake_force_configure' from command line to 'False'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'ament_cmake_args' from command line to 'None'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'catkin_cmake_args' from command line to 'None'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'serial' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.159s] [34mcolcon.colcon_core.verb[0m [1;30mDEBUG[0m [32mBuilding package 'serial' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial', 'merge_install': False, 'path': '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/serial', 'symlink_install': False, 'test_result_base': None}[0m
+[0.159s] [34mcolcon.colcon_core.executor[0m [1;30mINFO[0m Executing jobs using 'parallel' executor
+[0.160s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mrun_until_complete[0m
+[0.160s] [34mcolcon.colcon_ros.task.ament_cmake.build[0m [1;30mINFO[0m Building ROS package in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/serial' with build type 'ament_cmake'
+[0.160s] [34mcolcon.colcon_cmake.task.cmake.build[0m [1;30mINFO[0m Building CMake package in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/serial'
+[0.161s] [34mcolcon.colcon_core.plugin_system[0m [1;30mINFO[0m Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.161s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.161s] [34mcolcon.colcon_core.shell[0m [1;30mDEBUG[0m [32mSkip shell extension 'dsv' for command environment[0m
+[0.167s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoking command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake --build /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial -- -j16 -l16[0m
+[0.188s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoked command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake --build /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial -- -j16 -l16[0m
+[0.191s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoking command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake --install /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial[0m
+[0.194s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_environment_scripts_only(serial)
+[0.194s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoked command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake --install /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/serial[0m
+[0.195s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial' for CMake module files
+[0.195s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial' for CMake config files
+[0.196s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('serial', 'cmake_prefix_path')
+[0.196s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/hook/cmake_prefix_path.ps1'
+[0.196s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/hook/cmake_prefix_path.dsv'
+[0.196s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/hook/cmake_prefix_path.sh'
+[0.197s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/lib'
+[0.197s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/bin'
+[0.197s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/lib/pkgconfig/serial.pc'
+[0.197s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/lib/python3.10/site-packages'
+[0.197s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/bin'
+[0.197s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.ps1'
+[0.198s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package descriptor '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.dsv'
+[0.198s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.sh'
+[0.198s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.bash'
+[0.199s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.zsh'
+[0.199s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_file_with_runtime_dependencies(/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/colcon-core/packages/serial)
+[0.199s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_environment_scripts_only(serial)
+[0.199s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial' for CMake module files
+[0.200s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial' for CMake config files
+[0.200s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('serial', 'cmake_prefix_path')
+[0.200s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/hook/cmake_prefix_path.ps1'
+[0.200s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/hook/cmake_prefix_path.dsv'
+[0.200s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/hook/cmake_prefix_path.sh'
+[0.201s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/lib'
+[0.201s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/bin'
+[0.201s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/lib/pkgconfig/serial.pc'
+[0.201s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/lib/python3.10/site-packages'
+[0.201s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/bin'
+[0.201s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.ps1'
+[0.201s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package descriptor '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.dsv'
+[0.202s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.sh'
+[0.202s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.bash'
+[0.202s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/serial/package.zsh'
+[0.202s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_file_with_runtime_dependencies(/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/serial/share/colcon-core/packages/serial)
+[0.202s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mclosing loop[0m
+[0.203s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mloop closed[0m
+[0.203s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mrun_until_complete finished with '0'[0m
+[0.203s] [34mcolcon.colcon_core.event_reactor[0m [1;30mDEBUG[0m [32mjoining thread[0m
+[0.205s] [34mcolcon.colcon_core.plugin_system[0m [1;30mINFO[0m Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[0.205s] [34mcolcon.colcon_core.plugin_system[0m [1;30mINFO[0m Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[0.205s] [34mcolcon.colcon_notification.desktop_notification[0m [1;30mINFO[0m Sending desktop notification using 'notify2'
+[0.217s] [34mcolcon.colcon_core.event_reactor[0m [1;30mDEBUG[0m [32mjoined thread[0m
+[0.217s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/local_setup.ps1'
+[0.217s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix util module '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/_local_setup_util_ps1.py'
+[0.218s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/setup.ps1'
+[0.219s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/local_setup.sh'
+[0.219s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix util module '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/_local_setup_util_sh.py'
+[0.220s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/setup.sh'
+[0.220s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/local_setup.bash'
+[0.221s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/setup.bash'
+[0.221s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/local_setup.zsh'
+[0.222s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/setup.zsh'

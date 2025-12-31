@@ -1,0 +1,21 @@
+-- Install configuration: ""
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/config
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/config/ur_controllers.yaml
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/launch
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/launch/ur_sim_control.launch.py
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/launch/ur_sim_moveit.launch.py
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ament_index/resource_index/package_run_dependencies/ur_simulation_gazebo
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ament_index/resource_index/parent_prefix_path/ur_simulation_gazebo
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/ament_prefix_path.sh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/ament_prefix_path.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/path.sh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/environment/path.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.bash
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.sh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.zsh
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/local_setup.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/package.dsv
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ament_index/resource_index/packages/ur_simulation_gazebo
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/cmake/ur_simulation_gazeboConfig.cmake
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/cmake/ur_simulation_gazeboConfig-version.cmake
+-- Installing: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_simulation_gazebo/share/ur_simulation_gazebo/package.xml

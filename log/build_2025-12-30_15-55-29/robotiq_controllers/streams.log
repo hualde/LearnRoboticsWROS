@@ -1,0 +1,61 @@
+[0.010s] Invoking command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/robotiq_controllers': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers -DCMAKE_INSTALL_PREFIX=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/robotiq_controllers
+[0.038s] -- The C compiler identification is GNU 11.4.0
+[0.070s] -- The CXX compiler identification is GNU 11.4.0
+[0.076s] -- Detecting C compiler ABI info
+[0.109s] -- Detecting C compiler ABI info - done
+[0.114s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.114s] -- Detecting C compile features
+[0.114s] -- Detecting C compile features - done
+[0.116s] -- Detecting CXX compiler ABI info
+[0.158s] -- Detecting CXX compiler ABI info - done
+[0.163s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.163s] -- Detecting CXX compile features
+[0.163s] -- Detecting CXX compile features - done
+[0.166s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.355s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.417s] -- Found controller_interface: 2.52.2 (/opt/ros/humble/share/controller_interface/cmake)
+[0.457s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.461s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.468s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.477s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.489s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.619s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.621s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.638s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.668s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.669s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.679s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.680s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.685s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.691s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.697s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.735s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.736s] -- Found Threads: TRUE  
+[0.764s] -- Found std_srvs: 4.9.0 (/opt/ros/humble/share/std_srvs/cmake)
+[0.774s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.819s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.819s] -- Configured cppcheck include dirs: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/include
+[0.819s] -- Configured cppcheck exclude dirs and/or files: 
+[0.819s] -- Added test 'lint_cmake' to check CMake code style
+[0.823s] -- Configuring done
+[0.831s] -- Generating done
+[0.834s] -- Build files have been written to: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/robotiq_controllers
+[0.841s] Invoked command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/robotiq_controllers' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers -DCMAKE_INSTALL_PREFIX=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/robotiq_controllers
+[0.842s] Invoking command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/robotiq_controllers': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake --build /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/robotiq_controllers -- -j16 -l16
+[0.859s] [ 50%] [32mBuilding CXX object CMakeFiles/robotiq_controllers.dir/src/robotiq_activation_controller.cpp.o[0m
+[2.235s] [01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:[m[K In member function ‘[01m[Kbool robotiq_controllers::RobotiqActivationController::reactivateGripper(std_srvs::srv::Trigger_Request_<std::allocator<void> >::SharedPtr, std_srvs::srv::Trigger_Response_<std::allocator<void> >::SharedPtr)[m[K’:
+[2.235s] [01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:108:77:[m[K [01;31m[Kerror: [m[Kvoid value not ignored as it ought to be
+[2.235s]   108 |   resp->success = [01;31m[Kcommand_interfaces_[REACTIVATE_GRIPPER_RESPONSE].set_value(ASYNC_WAITING)[m[K;
+[2.235s]       |                   [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~[m[K
+[2.235s] [01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:109:73:[m[K [01;31m[Kerror: [m[Kvoid value not ignored as it ought to be
+[2.235s]   109 |   resp->success &= [01;31m[Kcommand_interfaces_[REACTIVATE_GRIPPER_CMD].set_value(1.0)[m[K;
+[2.235s]       |                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[2.235s] [01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:113:79:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<hardware_interface::LoanedCommandInterface>, hardware_interface::LoanedCommandInterface>::value_type[m[K’ {aka ‘[01m[Kclass hardware_interface::LoanedCommandInterface[m[K’} has no member named ‘[01m[Kget_optional[m[K’
+[2.235s]   113 |     const auto maybe_value = command_interfaces_[REACTIVATE_GRIPPER_RESPONSE].[01;31m[Kget_optional[m[K();
+[2.235s]       |                                                                               [01;31m[K^~~~~~~~~~~~[m[K
+[2.235s] [01m[K/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ros2_robotiq_gripper/robotiq_controllers/src/robotiq_activation_controller.cpp:122:87:[m[K [01;31m[Kerror: [m[K‘[01m[K__gnu_cxx::__alloc_traits<std::allocator<hardware_interface::LoanedCommandInterface>, hardware_interface::LoanedCommandInterface>::value_type[m[K’ {aka ‘[01m[Kclass hardware_interface::LoanedCommandInterface[m[K’} has no member named ‘[01m[Kget_optional[m[K’
+[2.235s]   122 |   resp->success &= static_cast<bool>(command_interfaces_[REACTIVATE_GRIPPER_RESPONSE].[01;31m[Kget_optional[m[K().value_or(false));
+[2.235s]       |                                                                                       [01;31m[K^~~~~~~~~~~~[m[K
+[2.540s] gmake[2]: *** [CMakeFiles/robotiq_controllers.dir/build.make:76: CMakeFiles/robotiq_controllers.dir/src/robotiq_activation_controller.cpp.o] Error 1
+[2.541s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/robotiq_controllers.dir/all] Error 2
+[2.541s] gmake: *** [Makefile:146: all] Error 2

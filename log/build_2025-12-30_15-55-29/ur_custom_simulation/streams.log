@@ -1,0 +1,24 @@
+[0.006s] Invoking command in '/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/ur_custom_simulation': AMENT_PREFIX_PATH=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_description:/home/hualde/misCosas/ros2_ws/install/ur_simulation_gazebo:/home/hualde/misCosas/ros2_ws/install/ur_robotiq_bringup:/home/hualde/misCosas/ros2_ws/install/ur_robotiq_description:/home/hualde/misCosas/ros2_ws/install/ur_custom_simulation:/home/hualde/misCosas/ros2_ws/install/manipulator_moveit_config:/home/hualde/misCosas/ros2_ws/install/manipulator:/home/hualde/misCosas/ros2_ws/install/ur_description:/home/hualde/misCosas/ros2_ws/install/serial:/home/hualde/misCosas/ros2_ws/install/my_robot_bringup:/home/hualde/misCosas/ros2_ws/install/my_robot_description:/home/hualde/misCosas/ros2_ws/install/robotiq_demo:/opt/ros/humble /usr/bin/cmake /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/ur_custom_simulation -DCMAKE_INSTALL_PREFIX=/home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/install/ur_custom_simulation
+[0.034s] -- The C compiler identification is GNU 11.4.0
+[0.065s] -- The CXX compiler identification is GNU 11.4.0
+[0.070s] -- Detecting C compiler ABI info
+[0.102s] -- Detecting C compiler ABI info - done
+[0.106s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.107s] -- Detecting C compile features
+[0.107s] -- Detecting C compile features - done
+[0.109s] -- Detecting CXX compiler ABI info
+[0.148s] -- Detecting CXX compiler ABI info - done
+[0.152s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.153s] -- Detecting CXX compile features
+[0.153s] -- Detecting CXX compile features - done
+[0.155s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.328s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.385s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.434s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.435s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.435s] -- Added test 'lint_cmake' to check CMake code style
+[0.436s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.437s] -- Added test 'xmllint' to check XML markup files
+[0.438s] -- Configuring done
+[0.440s] -- Generating done
+[0.441s] -- Build files have been written to: /home/hualde/misCosas/ros2_ws/src/LearnRoboticsWROS/build/ur_custom_simulation
