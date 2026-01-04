@@ -71,6 +71,34 @@
         <joint name="wrist_2_joint" value="-1.57"/>
         <joint name="wrist_3_joint" value="0"/>
     </group_state>
+
+    <group_state name="home" group="ur5_manipulator">
+        <joint name="elbow_joint" value="1.4059"/>
+        <joint name="shoulder_lift_joint" value="-2.2564"/>
+        <joint name="shoulder_pan_joint" value="0"/>
+        <joint name="wrist_1_joint" value="-1.6315"/>
+        <joint name="wrist_2_joint" value="-1.57"/>
+        <joint name="wrist_3_joint" value="0"/>
+    </group_state>
+    <!--Mis posiciones-->
+    <group_state name="en_pallet" group="ur5_manipulator">
+        <joint name="elbow_joint" value="-1.01"/>
+        <joint name="shoulder_lift_joint" value="-2.04"/>
+        <joint name="shoulder_pan_joint" value="0.0"/>
+        <joint name="wrist_1_joint" value="-1.21"/>
+        <joint name="wrist_2_joint" value="1.57"/>
+        <joint name="wrist_3_joint" value="-0.069"/>
+    </group_state>
+    <group_state name="en_destino" group="ur5_manipulator">
+        <joint name="elbow_joint" value="-1.01"/>
+        <joint name="shoulder_lift_joint" value="-2.04"/>
+        <joint name="shoulder_pan_joint" value="3.14"/>
+        <joint name="wrist_1_joint" value="-1.21"/>
+        <joint name="wrist_2_joint" value="1.57"/>
+        <joint name="wrist_3_joint" value="-0.069"/>
+    </group_state>
+    <!--Mis posiciones-->
+
     <group_state name="open" group="robotiq_gripper">
         <joint name="robotiq_85_left_knuckle_joint" value="0"/>
     </group_state>
