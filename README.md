@@ -88,6 +88,7 @@ sudo apt install ros-humble-moveit
 sudo apt install ros-humble-ros2-control
 sudo apt install ros-humble-ros2-controllers
 sudo apt install ros-humble-gazebo-ros-pkgs
+sudo apt install ros-humble-moveit-ros-perception
 ```
 
 ### Dependencias Python
