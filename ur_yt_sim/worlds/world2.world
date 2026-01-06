@@ -285,7 +285,6 @@
       <pose>1.28665 -0.00699 0 0 -0 0</pose>
     </model>
     <model name='euro_pallet'>
-      <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
         <inertial>
@@ -335,7 +334,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-0.84061 0.288997 0.7 0 -0 0</pose>
+      <pose>-1.44061 0.288997 0 0 -0 0</pose>
     </model>
     <model name='basement'>
       <link name='link_0'>
@@ -597,7 +596,75 @@
       </link>
       <pose>1.91417 0.547996 0 0 -0 0</pose>
     </model>
-    
+    <state world_name='default'>
+      <sim_time>140 755000000</sim_time>
+      <real_time>141 463350346</real_time>
+      <wall_time>1758029682 390218549</wall_time>
+      <iterations>140755</iterations>
+      <model name='basement'>
+        <pose>0 1e-06 0.399998 -1e-06 1e-06 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>0 1e-06 0.399998 -1e-06 1e-06 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cube_pick'>
+        <pose>0.499999 0 1.035 -1.3e-05 -3.8e-05 1.9e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='link_1'>
+          <pose>0.499999 0 1.035 -1.3e-05 -3.8e-05 1.9e-05</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.023352 -0.023352 -0.046701 1.16755 1.16757 0</acceleration>
+          <wrench>0.023352 -0.023352 -0.046701 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='euro_pallet'>
+        <pose>-1.44594 0.293144 0.071997 0 -1e-05 -0.013016</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-1.44594 0.293144 0.071997 0 -1e-05 -0.013016</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.09842 0.001255 -9.52338 -0.027153 -1.36742 -1.8e-05</acceleration>
+          <wrench>-1.96839 0.025102 -190.468 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='mini_stacking_box'>
+        <pose>0.794213 0.469284 1.29 0 -0 1.56178</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.794213 0.469284 1.29 0 -0 1.56178</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='table'>
+        <pose>0.716827 -0.005342 0 0 -0 1.56791</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.716827 -0.005342 0 0 -0 1.56791</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
         <pose>2.304 -5.73402 3.67055 0 0.409797 1.95119</pose>

@@ -681,3 +681,6 @@ Proyecto desarrollado como parte de aprendizaje en robótica y visión artificia
 **Última actualización:** Enero 2026  
 **Versión:** 1.0.0  
 **Estado:** En desarrollo activo
+
+
+ros2 launch ur_yt_sim spawn_ur5_camera_gripper_moveit.launch.py 2>&1 | grep -v "Joint.*mimic.*not found"
