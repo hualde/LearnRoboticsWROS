@@ -683,5 +683,33 @@ Proyecto desarrollado como parte de aprendizaje en robótica y visión artificia
 **Versión:** 1.0.0  
 **Estado:** En desarrollo activo
 
-
+---
+#Para no visualizar errores en consola
+```bash
 ros2 launch ur_yt_sim spawn_ur5_camera_gripper_moveit.launch.py 2>&1 | grep -v "Joint.*mimic.*not found"
+```
+#Sin octomap
+```bash
+ros2 launch ur_yt_sim spawn_ur5_camera_gripper_moveit.launch.py with_octomap:=false 2>&1 | grep -v "Joint.*mimic.*not found"
+```
+#Añadimos colisiones
+```bash
+ros2 run ur_yt_sim test_ik_collision_obj
+```
+
+#Servicio pinza
+```bash
+ros2 service call /ATTACHLINK linkattacher_msgs/srv/AttachLink "{
+  model1_name: 'cobot',
+  link1_name: 'wrist_3_link',
+  model2_name: 'cube_pick',
+  link2_name: 'link_1'
+}"
+ros2 service call /DETACHLINK linkattacher_msgs/srv/DetachLink "{
+  model1_name: 'cobot',
+  link1_name: 'wrist_3_link',
+  model2_name: 'cube_pick',
+  link2_name: 'link_1'
+}"
+
+```
