@@ -303,6 +303,23 @@ goal.command.max_effort = 100.0
 
 ---
 
+### 5. Secuencia de Aprendizaje (`learning_moveit/`)
+
+Para fines educativos y pruebas industriales, se ha incluido una serie de scripts secuenciales en `ur5_pick_place/scripts/learning_moveit/`.
+
+#### **Script Principal: `06_sequential_pick_place.py`**
+Este script realiza una secuencia completa de Pick & Place con las siguientes especificaciones actuales:
+
+**Punto de Recogida (PICK):**
+- **Posición (XYZ):** `[0.500, 0.000, 0.379]`
+- **Orientación (Quaternion xyzw):** `[0.737, -0.675, 0.020, 0.006]`
+
+**Punto de Descarga (PLACE):**
+- **Posición (XYZ):** `[0.400, 0.545, 0.515]`
+- **Orientación (Quaternion xyzw):** `[0.665, -0.600, 0.310, -0.320]`
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```

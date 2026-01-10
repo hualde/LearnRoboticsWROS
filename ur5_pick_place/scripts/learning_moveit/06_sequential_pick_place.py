@@ -240,15 +240,16 @@ class SequentialPickPlace(Node):
         self.control_gripper(0.0)
         
         # 3. Posicionarse sobre el objeto (Approach)
-        # Coordenadas reales PICK: [0.5, 0.0, 0.375]
+        # Coordenadas reales PICK: [0.5, 0.0, 0.379]
+        # Orientación: [0.737, -0.675, 0.020, 0.006]
         self.get_logger().info('3️⃣  Aproximación sobre el objeto (Z=0.5)...')
-        if not self.move_to_xyz(0.5, 0.0, 0.5):
+        if not self.move_to_xyz(0.5, 0.0, 0.5, 0.737, -0.675, 0.020, 0.006):
             self.get_logger().error('🛑 Paso 3 fallido. Abortando.')
             return
 
         # 4. Bajar a coger el objeto (Pick)
-        self.get_logger().info('4️⃣  Bajando para agarrar (Z=0.375)...')
-        if not self.move_to_xyz(0.5, 0.0, 0.375):
+        self.get_logger().info('4️⃣  Bajando para agarrar (Z=0.379)...')
+        if not self.move_to_xyz(0.5, 0.0, 0.379, 0.737, -0.675, 0.020, 0.006):
             self.get_logger().error('🛑 Paso 4 fallido. Abortando.')
             return
 
