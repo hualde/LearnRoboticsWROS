@@ -21,3 +21,19 @@ Podemos decirle al robot qué hacer de tres formas:
 
 ### 4. El Action Server `/move_action`
 A diferencia de ROS 1 (donde se usaba `moveit_commander`), en ROS 2 MoveIt se comunica principalmente a través de **Actions**. Nuestros scripts actuarán como "clientes" que envían peticiones a este servidor.
+
+---
+
+## 🛠️ Guía de Scripts en esta Carpeta
+
+Para tu aprendizaje, hemos creado esta secuencia de scripts:
+
+1.  **`01_intro_action.py`**: El primer paso. Aprenderás cómo conectar tu código Python al "cerebro" de MoveIt.
+2.  **`02_move_joints.py`**: Control directo. Mueve cada motor del brazo por separado usando ángulos (grados).
+3.  **`03_move_cartesian.py`**: El poder de la IA. Tú le das una coordenada X, Y, Z y el robot calcula cómo llegar.
+4.  **`04_get_current_pose.py`**: Tu herramienta de diagnóstico. Te dice exactamente dónde está la punta del robot en cada momento.
+5.  **`05_gripper_control.py`**: El final del brazo. Aprende a abrir y cerrar la pinza Robotiq para agarrar objetos.
+6.  **`06_sequential_pick_place.py`**: El "gran final". Una secuencia automática de 10 pasos que realiza una tarea completa de mover un objeto.
+
+> [!TIP]
+> Te recomiendo tener siempre abierta una terminal ejecutando el **`04_get_current_pose.py`** mientras pruebas los demás scripts. ¡Así verás cómo cambian los números en tiempo real!
