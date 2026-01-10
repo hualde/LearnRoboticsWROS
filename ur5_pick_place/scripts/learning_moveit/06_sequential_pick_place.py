@@ -12,6 +12,7 @@ from control_msgs.action import GripperCommand
 from geometry_msgs.msg import Pose, Point
 from moveit_msgs.msg import Constraints, JointConstraint, PositionConstraint, OrientationConstraint, BoundingVolume
 from shape_msgs.msg import SolidPrimitive
+from linkattacher_msgs.srv import AttachLink, DetachLink
 import math
 import time
 
@@ -19,13 +20,21 @@ class SequentialPickPlace(Node):
     def __init__(self):
         super().__init__('sequential_pick_place_node')
         
-        # 1. Clientes de Acción
+        # 1. Clientes de Acción (Movimiento)
         self._arm_client = ActionClient(self, MoveGroup, '/move_action')
         self._gripper_client = ActionClient(self, GripperCommand, '/gripper_position_controller/gripper_cmd')
         
-        self.get_logger().info('⏳ Esperando a los controladores (Brazo + Pinza)...')
+        # 2. Clientes de Servicio (Simulación Gazebo)
+        self.attach_client = self.create_client(AttachLink, '/ATTACHLINK')
+        self.detach_client = self.create_client(DetachLink, '/DETACHLINK')
+        
+        self.get_logger().info('⏳ Esperando a los controladores y servicios...')
         self._arm_client.wait_for_server()
         self._gripper_client.wait_for_server()
+        
+        while not self.attach_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('⏳ Esperando servicio /ATTACHLINK...')
+        
         self.get_logger().info('✅ Sistema completo preparado!')
 
     # --- MÉTODOS DE APOYO (REUTILIZADOS) ---
@@ -35,6 +44,8 @@ class SequentialPickPlace(Node):
         angles_rad = [math.radians(a) for a in angles_deg]
         goal_msg = MoveGroup.Goal()
         goal_msg.request.group_name = "ur5_manipulator"
+        # 💡 MUY IMPORTANTE: Usar el estado ACTUAL del robot como inicio
+        goal_msg.request.start_state.is_diff = True
         
         joint_names = ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", 
                        "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
@@ -62,22 +73,25 @@ class SequentialPickPlace(Node):
         rclpy.spin_until_future_complete(self, result_future)
         result = result_future.result()
         
-        # El código 1 significa SUCCESS en MoveIt
         if result.result.error_code.val == 1:
             return True
         else:
             self.get_logger().error(f'❌ Error en movimiento de joints: {result.result.error_code.val}')
             return False
 
-    def move_to_xyz(self, x, y, z):
-        """Mueve el brazo a una coordenada XYZ"""
+    def move_to_xyz(self, x, y, z, ox=1.0, oy=0.0, oz=0.0, ow=0.0):
+        """Mueve el brazo a una coordenada XYZ con orientación opcional"""
+        # 💡 Pausa de seguridad para que la física de Gazebo se estabilice tras el ATTACH
+        time.sleep(0.5)
+
         goal_msg = MoveGroup.Goal()
         goal_msg.request.group_name = "ur5_manipulator"
         goal_msg.request.workspace_parameters.header.frame_id = "base_link"
+        goal_msg.request.start_state.is_diff = True
         
-        # Parámetros de planificación
-        goal_msg.request.num_planning_attempts = 10
-        goal_msg.request.allowed_planning_time = 5.0
+        # 💡 Máxima persistencia para el planificador
+        goal_msg.request.num_planning_attempts = 50 
+        goal_msg.request.allowed_planning_time = 15.0
         goal_msg.request.max_velocity_scaling_factor = 0.1
         goal_msg.request.max_acceleration_scaling_factor = 0.1
         
@@ -89,7 +103,7 @@ class SequentialPickPlace(Node):
         bv = BoundingVolume()
         primitive = SolidPrimitive()
         primitive.type = SolidPrimitive.SPHERE
-        primitive.dimensions = [0.01] # 1cm de tolerancia
+        primitive.dimensions = [0.03] # Subimos a 3cm de tolerancia para mayor robustez
         bv.primitives.append(primitive)
         target_pose = Pose()
         target_pose.position.x = x
@@ -100,27 +114,30 @@ class SequentialPickPlace(Node):
         pc.weight = 1.0
         constraints.position_constraints.append(pc)
         
-        # Orientación (mirando hacia abajo)
-        oc = OrientationConstraint()
-        oc.header.frame_id = "base_link"
-        oc.link_name = "tool0"
-        oc.orientation.x = 1.0
-        oc.orientation.y = 0.0
-        oc.orientation.z = 0.0
-        oc.orientation.w = 0.0
-        oc.absolute_x_axis_tolerance = 0.2
-        oc.absolute_y_axis_tolerance = 0.2
-        oc.absolute_z_axis_tolerance = 0.2
-        oc.weight = 1.0
-        constraints.orientation_constraints.append(oc)
+        # Orientación (Si ox no es None)
+        if ox is not None:
+            oc = OrientationConstraint()
+            oc.header.frame_id = "base_link"
+            oc.link_name = "tool0"
+            oc.orientation.x = float(ox)
+            oc.orientation.y = float(oy)
+            oc.orientation.z = float(oz)
+            oc.orientation.w = float(ow)
+            # 💡 Tolerancia de rotación generosa (0.4 rad ~ 22º)
+            oc.absolute_x_axis_tolerance = 0.4
+            oc.absolute_y_axis_tolerance = 0.4
+            oc.absolute_z_axis_tolerance = 0.4
+            oc.weight = 1.0
+            constraints.orientation_constraints.append(oc)
         
         goal_msg.request.goal_constraints.append(constraints)
         
+        self.get_logger().info(f'   [IK] Planificando a: ({x:.2f}, {y:.2f}, {z:.2f})...')
         send_goal_future = self._arm_client.send_goal_async(goal_msg)
         rclpy.spin_until_future_complete(self, send_goal_future)
         handle = send_goal_future.result()
         if not handle.accepted:
-            self.get_logger().error('❌ Petición Cartesian rechazada')
+            self.get_logger().error(f'   [IK] Petición Cartesian rechazada.')
             return False
         
         result_future = handle.get_result_async()
@@ -130,7 +147,7 @@ class SequentialPickPlace(Node):
         if result.result.error_code.val == 1:
             return True
         else:
-            self.get_logger().error(f'❌ Error en movimiento Cartesian: {result.result.error_code.val}')
+            self.get_logger().error(f'   [IK] Error MoveIt ID: {result.result.error_code.val}')
             return False
 
     def control_gripper(self, position):
@@ -139,77 +156,139 @@ class SequentialPickPlace(Node):
         goal_msg.command.position = float(position)
         goal_msg.command.max_effort = 100.0
         
+        self.get_logger().info(f'   [Gripper] Enviando objetivo: {position}...')
         send_goal_future = self._gripper_client.send_goal_async(goal_msg)
-        rclpy.spin_until_future_complete(self, send_goal_future)
+        rclpy.spin_until_future_complete(self, send_goal_future, timeout_sec=5.0)
+        
+        if not send_goal_future.done():
+            self.get_logger().error('   [Gripper] Tiempo agotado enviando objetivo')
+            return False
+
         handle = send_goal_future.result()
         if not handle.accepted:
-            self.get_logger().error('❌ Petición de pinza rechazada')
+            self.get_logger().error('   [Gripper] Petición rechazada')
             return False
         
+        self.get_logger().info('   [Gripper] Objetivo aceptado, esperando resultado...')
         result_future = handle.get_result_async()
-        rclpy.spin_until_future_complete(self, result_future)
+        rclpy.spin_until_future_complete(self, result_future, timeout_sec=10.0)
+        
+        if not result_future.done():
+            self.get_logger().warning('   [Gripper] Tiempo agotado esperando resultado (continuando igualmente...)')
+            return True # Continuamos para no bloquear la secuencia
+            
+        self.get_logger().info('   [Gripper] Movimiento finalizado.')
         return True
+
+    # --- MÉTODOS GAZEBO (NUEVOS) ---
+
+    def attach_object(self):
+        """Llama al servicio de Gazebo para 'pegar' el cubo a la pinza"""
+        req = AttachLink.Request()
+        req.model1_name = 'cobot'
+        req.link1_name = 'wrist_3_link'
+        req.model2_name = 'cube_pick'
+        req.link2_name = 'link_1'
+        
+        self.get_logger().info('🔗 Llamando a ATTACHLINK...')
+        future = self.attach_client.call_async(req)
+        # Damos un pequeño timeout al servicio por si se cuelga
+        rclpy.spin_until_future_complete(self, future, timeout_sec=2.0)
+        
+        if future.done():
+            self.get_logger().info('🔗 ATTACHLINK completado.')
+            return future.result()
+        else:
+            self.get_logger().warning('🔗 ATTACHLINK no respondió a tiempo (revisa Gazebo)')
+            return None
+
+    def detach_object(self):
+        """Llama al servicio de Gazebo para 'soltar' el cubo"""
+        req = DetachLink.Request()
+        req.model1_name = 'cobot'
+        req.link1_name = 'wrist_3_link'
+        req.model2_name = 'cube_pick'
+        req.link2_name = 'link_1'
+        
+        self.get_logger().info('🔓 Llamando a DETACHLINK...')
+        future = self.detach_client.call_async(req)
+        # Damos un pequeño timeout al servicio por si se cuelga
+        rclpy.spin_until_future_complete(self, future, timeout_sec=2.0)
+        
+        if future.done():
+            self.get_logger().info('🔓 DETACHLINK completado.')
+            return future.result()
+        else:
+            self.get_logger().warning('🔓 DETACHLINK no respondió a tiempo (revisa Gazebo)')
+            return None
 
     # --- LA SECUENCIA ---
 
     def run_sequence(self):
-        self.get_logger().info('🏁 INICIANDO SECUENCIA PICK & PLACE')
+        self.get_logger().info('🏁 INICIANDO SECUENCIA PICK & PLACE (Coordenadas Reales)')
 
         # 1. Ir a HOME (Seguridad)
         self.get_logger().info('1️⃣  Yendo a HOME...')
-        if not self.move_to_joints([0.0, -129.0, 80.0, -93.0, -90.0, 0.0]):
+        # Usamos grados: [0, -90, 0, -90, 0, 0] es una posición vertical "Cylindrical"
+        # O la posición Home del script 02: [0.0, -129.0, 80.0, -93.0, -90.0, 0.0]
+        if not self.move_to_joints([0.0, -90.0, 0.0, -90.0, 0.0, 0.0]):
             self.get_logger().error('🛑 Paso 1 fallido. Abortando.')
             return
 
         # 2. Abrir Pinza
         self.get_logger().info('2️⃣  Abriendo pinza...')
-        if not self.control_gripper(0.0):
-            self.get_logger().error('🛑 Paso 2 fallido. Abortando.')
-            # No abortamos por pinza necesariamente, pero avisamos
+        self.control_gripper(0.0)
         
         # 3. Posicionarse sobre el objeto (Approach)
-        self.get_logger().info('3️⃣  Aproximación sobre el objeto...')
-        if not self.move_to_xyz(0.4, 0.1, 0.7):
+        # Coordenadas reales PICK: [0.5, 0.0, 0.375]
+        self.get_logger().info('3️⃣  Aproximación sobre el objeto (Z=0.5)...')
+        if not self.move_to_xyz(0.5, 0.0, 0.5):
             self.get_logger().error('🛑 Paso 3 fallido. Abortando.')
             return
 
         # 4. Bajar a coger el objeto (Pick)
-        self.get_logger().info('4️⃣  Bajando para agarrar...')
-        if not self.move_to_xyz(0.4, 0.1, 0.5):
+        self.get_logger().info('4️⃣  Bajando para agarrar (Z=0.375)...')
+        if not self.move_to_xyz(0.5, 0.0, 0.375):
             self.get_logger().error('🛑 Paso 4 fallido. Abortando.')
             return
 
-        # 5. Cerrar Pinza
-        self.get_logger().info('5️⃣  Cerrando pinza (Pick!)')
-        self.control_gripper(0.79)
+        # 5. Cerrar Pinza y ATTACH
+        self.get_logger().info('5️⃣  Cerrando pinza (parcial) + ATTACH')
+        # Usamos 0.3 para que no llegue a tocar el cubo y no lo desplace
+        self.control_gripper(0.3)
+        self.attach_object()
         time.sleep(1.0) 
 
         # 6. Subir (Lift)
         self.get_logger().info('6️⃣  Levantando objeto...')
-        if not self.move_to_xyz(0.4, 0.1, 0.7):
+        # 💡 Al subir, no nos importa tanto la orientación exacta, así que ponemos ox=None
+        if not self.move_to_xyz(0.5, 0.0, 0.5, ox=None):
             self.get_logger().error('🛑 Paso 6 fallido. Abortando.')
             return
 
         # 7. Mover a zona de descarga (Place area)
-        self.get_logger().info('7️⃣  Moviendo a zona de descarga...')
-        if not self.move_to_xyz(0.4, -0.3, 0.7):
+        # Coordenadas reales PLACE: [0.4, 0.545, 0.515]
+        # Orientación PLACE: [0.665, -0.600, 0.310, -0.320]
+        self.get_logger().info('7️⃣  Moviendo a zona de descarga (Z=0.6)...')
+        if not self.move_to_xyz(0.4, 0.545, 0.6, 0.665, -0.6, 0.31, -0.32):
             self.get_logger().error('🛑 Paso 7 fallido. Abortando.')
             return
 
         # 8. Bajar para dejar (Place)
-        self.get_logger().info('8️⃣  Bajando para soltar...')
-        if not self.move_to_xyz(0.4, -0.3, 0.55):
+        self.get_logger().info('8️⃣  Bajando para soltar (Z=0.515)...')
+        if not self.move_to_xyz(0.4, 0.545, 0.515, 0.665, -0.6, 0.31, -0.32):
             self.get_logger().error('🛑 Paso 8 fallido. Abortando.')
             return
 
-        # 9. Abrir Pinza
-        self.get_logger().info('9️⃣  Abriendo pinza (Soltando)')
+        # 9. Abrir Pinza y DETACH
+        self.get_logger().info('9️⃣  Abriendo pinza + DETACH')
+        self.detach_object()
         self.control_gripper(0.0)
 
         # 10. Subir y volver a HOME
         self.get_logger().info('🔟 Finalizando y volviendo a HOME...')
-        self.move_to_xyz(0.4, -0.3, 0.7)
-        self.move_to_joints([0.0, -129.0, 80.0, -93.0, -90.0, 0.0])
+        self.move_to_xyz(0.4, 0.545, 0.6, 0.665, -0.6, 0.31, -0.32)
+        self.move_to_joints([0.0, -90.0, 0.0, -90.0, 0.0, 0.0])
 
         self.get_logger().info('✨ SECUENCIA COMPLETADA CON ÉXITO ✨')
 
