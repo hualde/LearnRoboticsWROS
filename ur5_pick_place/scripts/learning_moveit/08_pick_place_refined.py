@@ -162,6 +162,77 @@ class RefinedPickPlace(Node):
             self.get_logger().error(f'❌ Error MoveIt Pose: {result.result.error_code.val}')
             return False
 
+    def move_to_pose_lin(self, x, y, z, ox, oy, oz, ow):
+        """Mueve el brazo linealmente (Pilz LIN) manteniendo orientación"""
+        
+        goal_msg = MoveGroup.Goal()
+        goal_msg.request.group_name = "ur5_manipulator"
+        goal_msg.request.start_state.is_diff = True
+        
+        # Usar Pilz Industrial Motion Planner (LIN)
+        goal_msg.request.pipeline_id = "pilz_industrial_motion_planner"
+        goal_msg.request.planner_id = "LIN"
+        
+        goal_msg.request.num_planning_attempts = 10
+        goal_msg.request.allowed_planning_time = 5.0
+        goal_msg.request.max_velocity_scaling_factor = 0.1
+        goal_msg.request.max_acceleration_scaling_factor = 0.1
+        
+        constraints = Constraints()
+        # Posición
+        pc = PositionConstraint()
+        pc.header.frame_id = "base_link"
+        pc.link_name = "tool0"
+        bv = BoundingVolume()
+        primitive = SolidPrimitive()
+        primitive.type = SolidPrimitive.SPHERE
+        primitive.dimensions = [0.005] 
+        bv.primitives.append(primitive)
+        target_pose = Pose()
+        target_pose.position.x = float(x)
+        target_pose.position.y = float(y)
+        target_pose.position.z = float(z)
+        bv.primitive_poses.append(target_pose)
+        pc.constraint_region = bv
+        pc.weight = 1.0
+        constraints.position_constraints.append(pc)
+        
+        # Orientación
+        oc = OrientationConstraint()
+        oc.header.frame_id = "base_link"
+        oc.link_name = "tool0"
+        oc.orientation.x = float(ox)
+        oc.orientation.y = float(oy)
+        oc.orientation.z = float(oz)
+        oc.orientation.w = float(ow)
+        oc.absolute_x_axis_tolerance = 0.01
+        oc.absolute_y_axis_tolerance = 0.01
+        oc.absolute_z_axis_tolerance = 0.01
+        oc.weight = 1.0
+        constraints.orientation_constraints.append(oc)
+        
+        goal_msg.request.goal_constraints.append(constraints)
+        
+        self.get_logger().info(f'📏 Moviendo LINEAL a: ({x}, {y}, {z})')
+        send_goal_future = self._arm_client.send_goal_async(goal_msg)
+        rclpy.spin_until_future_complete(self, send_goal_future)
+        
+        handle = send_goal_future.result()
+        if not handle.accepted:
+            self.get_logger().error('❌ Petición LIN rechazada')
+            return False
+        
+        result_future = handle.get_result_async()
+        rclpy.spin_until_future_complete(self, result_future)
+        result = result_future.result()
+        
+        if result.result.error_code.val == 1:
+            self.get_logger().info('✨ Movimiento LIN completado')
+            return True
+        else:
+            self.get_logger().error(f'❌ Error MoveIt LIN: {result.result.error_code.val}')
+            return False
+
     def control_gripper(self, position):
         """Abre o cierra la pinza (0.0 = Abierto, 0.8 = Cerrado)"""
         goal_msg = GripperCommand.Goal()
@@ -277,6 +348,20 @@ def main(args=None):
     print("\n🚀 FASE 7: VOLVER A READY")
     input("Presiona ENTER para volver a la posición READY...")
     node.move_to_joints(ready_angles)
+    
+    # --- FASE 8: TRANSLACIÓN A ZONA DE DESCARGA (LIN) ---
+    print("\n🚀 FASE 8: TRANSLACIÓN (LIN)")
+    input("Presiona ENTER para mover a la zona de descarga (Manteniendo Orientación)...")
+    
+    # 8.1 Waypoint Intermedio seguro para salvar el muro (Wall1 X=[0.25, 0.75])
+    # Nos movemos a X=0.0 para rodearlo por la izquierda.
+    print("... Esquivando muro (X=0.0) ...")
+    node.move_to_pose_lin(0.0, 0.3, 0.6, 0.665, -0.600, 0.310, -0.320)
+    
+    # 8.2 Destino Final
+    # Zona de descarga: x=0.4, y=0.545, z=0.6
+    print("... Yendo al destino final ...")
+    node.move_to_pose_lin(0.4, 0.545, 0.6, 0.665, -0.600, 0.310, -0.320)
     
     node.destroy_node()
     rclpy.shutdown()
