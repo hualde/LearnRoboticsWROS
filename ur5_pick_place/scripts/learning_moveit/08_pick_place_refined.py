@@ -12,6 +12,7 @@ from moveit_msgs.action import MoveGroup
 from moveit_msgs.msg import Constraints, JointConstraint, PositionConstraint, OrientationConstraint, BoundingVolume
 from shape_msgs.msg import SolidPrimitive
 from geometry_msgs.msg import Pose
+from linkattacher_msgs.srv import AttachLink, DetachLink
 import math
 import time
 
@@ -24,10 +25,18 @@ class RefinedPickPlace(Node):
         # 2. Cliente de Acción para Gripper
         self._gripper_client = ActionClient(self, GripperCommand, '/gripper_position_controller/gripper_cmd')
         
+        # 3. Clientes de Servicio (Simulación Gazebo)
+        self.attach_client = self.create_client(AttachLink, '/ATTACHLINK')
+        self.detach_client = self.create_client(DetachLink, '/DETACHLINK')
+        
         self.get_logger().info('⏳ Esperando al servidor de MoveIt...')
         self._arm_client.wait_for_server()
         self._gripper_client.wait_for_server()
-        self.get_logger().info('✅ MoveIt y Gripper detectados.')
+        
+        while not self.attach_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('⏳ Esperando servicio /ATTACHLINK...')
+            
+        self.get_logger().info('✅ MoveIt, Gripper y Servicios detectados.')
 
     def move_to_joints(self, angles_deg):
         """Mueve el brazo usando ángulos en grados"""
@@ -178,6 +187,44 @@ class RefinedPickPlace(Node):
         self.get_logger().info('✨ Gripper OK')
         return True
 
+    def attach_object(self):
+        """Llama al servicio de Gazebo para 'pegar' el cubo a la pinza"""
+        req = AttachLink.Request()
+        req.model1_name = 'cobot'
+        req.link1_name = 'wrist_3_link'
+        req.model2_name = 'cube_pick'
+        req.link2_name = 'link_1'
+        
+        self.get_logger().info('🔗 Llamando a ATTACHLINK...')
+        future = self.attach_client.call_async(req)
+        rclpy.spin_until_future_complete(self, future, timeout_sec=2.0)
+        
+        if future.done():
+            self.get_logger().info('🔗 ATTACHLINK completado.')
+            return future.result()
+        else:
+            self.get_logger().warning('🔗 ATTACHLINK no respondió a tiempo')
+            return None
+
+    def detach_object(self):
+        """Llama al servicio de Gazebo para 'soltar' el cubo"""
+        req = DetachLink.Request()
+        req.model1_name = 'cobot'
+        req.link1_name = 'wrist_3_link'
+        req.model2_name = 'cube_pick'
+        req.link2_name = 'link_1'
+        
+        self.get_logger().info('🔓 Llamando a DETACHLINK...')
+        future = self.detach_client.call_async(req)
+        rclpy.spin_until_future_complete(self, future, timeout_sec=2.0)
+        
+        if future.done():
+            self.get_logger().info('🔓 DETACHLINK completado.')
+            return future.result()
+        else:
+            self.get_logger().warning('🔓 DETACHLINK no respondió a tiempo')
+            return None
+
 def main(args=None):
     rclpy.init(args=args)
     node = RefinedPickPlace()
@@ -213,6 +260,13 @@ def main(args=None):
     input("Presiona ENTER para BAJAR a la posición de agarre (Z=0.379)...")
     # Misma X, Y, Orientación, pero bajamos Z a 0.379
     node.move_to_pose(0.5, 0.0, 0.379, 0.737, -0.675, 0.020, 0.006)
+    
+    # --- FASE 5: CERRAR PINZA (ATTACH) ---
+    print("\n🚀 FASE 5: CERRAR PINZA Y ATTACH")
+    input("Presiona ENTER para CERRAR pinza (0.3) y ATTACH...")
+    node.control_gripper(0.3)
+    node.attach_object()
+    time.sleep(1.0) # Esperar a que se estabilice
     
     node.destroy_node()
     rclpy.shutdown()
