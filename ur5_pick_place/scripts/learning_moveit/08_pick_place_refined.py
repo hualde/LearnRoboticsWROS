@@ -363,6 +363,12 @@ def main(args=None):
     print("... Yendo al destino final ...")
     node.move_to_pose_lin(0.4, 0.545, 0.6, 0.665, -0.600, 0.310, -0.320)
     
+    # --- FASE 9: SOLTAR (OPEN & DETACH) ---
+    print("\n🚀 FASE 9: SOLTAR (PLACE)")
+    input("Presiona ENTER para ABRIR pinza y SOLTAR (DETACH)...")
+    node.control_gripper(0.0) # Abrir
+    node.detach_object()
+    
     node.destroy_node()
     rclpy.shutdown()
 
