@@ -268,6 +268,16 @@ def main(args=None):
     node.attach_object()
     time.sleep(1.0) # Esperar a que se estabilice
     
+    # --- FASE 6: SUBIR (LIFT) ---
+    print("\n🚀 FASE 6: SUBIR (LIFT)")
+    input("Presiona ENTER para SUBIR a la posición de aproximación (Z=0.5)...")
+    node.move_to_pose(0.5, 0.0, 0.5, 0.737, -0.675, 0.020, 0.006)
+    
+    # --- FASE 7: VOLVER A READY ---
+    print("\n🚀 FASE 7: VOLVER A READY")
+    input("Presiona ENTER para volver a la posición READY...")
+    node.move_to_joints(ready_angles)
+    
     node.destroy_node()
     rclpy.shutdown()
 
