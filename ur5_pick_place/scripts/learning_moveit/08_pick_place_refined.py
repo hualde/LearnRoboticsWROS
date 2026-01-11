@@ -208,6 +208,12 @@ def main(args=None):
     input("Presiona ENTER para ABRIR la pinza...")
     node.control_gripper(0.0) # 0.0 = Abierto
     
+    # --- FASE 4: BAJAR A COGER (PICK) ---
+    print("\n🚀 FASE 4: BAJAR (PICK)")
+    input("Presiona ENTER para BAJAR a la posición de agarre (Z=0.379)...")
+    # Misma X, Y, Orientación, pero bajamos Z a 0.379
+    node.move_to_pose(0.5, 0.0, 0.379, 0.737, -0.675, 0.020, 0.006)
+    
     node.destroy_node()
     rclpy.shutdown()
 
