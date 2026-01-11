@@ -31,6 +31,10 @@ class RefinedPickPlace(Node):
         goal_msg.request.group_name = "ur5_manipulator"
         goal_msg.request.start_state.is_diff = True
         
+        # Usar Pilz Industrial Motion Planner para movimientos simples (PTP)
+        goal_msg.request.pipeline_id = "pilz_industrial_motion_planner"
+        goal_msg.request.planner_id = "PTP"
+        
         # Parámetros para aumentar robustez
         goal_msg.request.num_planning_attempts = 10
         goal_msg.request.allowed_planning_time = 5.0
