@@ -7,6 +7,7 @@ En esta primera fase implementamos la estructura básica y el movimiento a HOME.
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionClient
+from control_msgs.action import GripperCommand
 from moveit_msgs.action import MoveGroup
 from moveit_msgs.msg import Constraints, JointConstraint, PositionConstraint, OrientationConstraint, BoundingVolume
 from shape_msgs.msg import SolidPrimitive
@@ -20,10 +21,13 @@ class RefinedPickPlace(Node):
         
         # 1. Cliente de Acción para MoveGroup
         self._arm_client = ActionClient(self, MoveGroup, '/move_action')
+        # 2. Cliente de Acción para Gripper
+        self._gripper_client = ActionClient(self, GripperCommand, '/gripper_position_controller/gripper_cmd')
         
         self.get_logger().info('⏳ Esperando al servidor de MoveIt...')
         self._arm_client.wait_for_server()
-        self.get_logger().info('✅ MoveIt detectado.')
+        self._gripper_client.wait_for_server()
+        self.get_logger().info('✅ MoveIt y Gripper detectados.')
 
     def move_to_joints(self, angles_deg):
         """Mueve el brazo usando ángulos en grados"""
@@ -149,6 +153,31 @@ class RefinedPickPlace(Node):
             self.get_logger().error(f'❌ Error MoveIt Pose: {result.result.error_code.val}')
             return False
 
+    def control_gripper(self, position):
+        """Abre o cierra la pinza (0.0 = Abierto, 0.8 = Cerrado)"""
+        goal_msg = GripperCommand.Goal()
+        goal_msg.command.position = float(position)
+        goal_msg.command.max_effort = 100.0
+        
+        self.get_logger().info(f'🖐 Gripper: {position}...')
+        send_goal_future = self._gripper_client.send_goal_async(goal_msg)
+        rclpy.spin_until_future_complete(self, send_goal_future, timeout_sec=5.0)
+        
+        if not send_goal_future.done():
+            self.get_logger().error('❌ Gripper Timeout')
+            return False
+
+        handle = send_goal_future.result()
+        if not handle.accepted:
+            self.get_logger().error('❌ Gripper Rechazado')
+            return False
+        
+        result_future = handle.get_result_async()
+        rclpy.spin_until_future_complete(self, result_future)
+        
+        self.get_logger().info('✨ Gripper OK')
+        return True
+
 def main(args=None):
     rclpy.init(args=args)
     node = RefinedPickPlace()
@@ -173,6 +202,11 @@ def main(args=None):
     # Coordenadas: [0.5, 0.0, 0.5]
     # Orientación: [0.737, -0.675, 0.020, 0.006]
     node.move_to_pose(0.5, 0.0, 0.5, 0.737, -0.675, 0.020, 0.006)
+    
+    # --- FASE 3: ABRIR PINZA ---
+    print("\n🚀 FASE 3: ABRIR PINZA")
+    input("Presiona ENTER para ABRIR la pinza...")
+    node.control_gripper(0.0) # 0.0 = Abierto
     
     node.destroy_node()
     rclpy.shutdown()
