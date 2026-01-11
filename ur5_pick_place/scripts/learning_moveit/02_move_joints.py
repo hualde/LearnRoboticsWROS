@@ -73,8 +73,9 @@ def main(args=None):
     
     # Ejemplo: Una posición en "L"
     # [Hombro, Elevación, Codo, Muñeca1, Muñeca2, Muñeca3]
-    pos_l = [0, -90, 90, -90, -90, 0]
-    
+    #pos_l = [0, -90, 90, -90, -90, 0]
+    pos_l = [0, -129, 80, -93, -90, 0]
+
     print(f"Moviendo a configuración de joints: {pos_l}")
     node.move_to_joints(pos_l)
     
