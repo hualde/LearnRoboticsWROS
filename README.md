@@ -730,3 +730,67 @@ ros2 service call /DETACHLINK linkattacher_msgs/srv/DetachLink "{
 }"
 
 ```
+
+## 🐳 Docker
+
+### Quick Start
+```bash
+# Pull from Docker Hub
+docker pull hualde/ur5-robotiq85:latest
+
+# Allow X11 forwarding
+xhost +si:localuser:root
+
+# Run container
+docker run -it --rm \
+  --network host \
+  -e DISPLAY=$DISPLAY \
+  -e QT_X11_NO_MITSHM=1 \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  -v /dev/dri:/dev/dri \
+  hualde/ur5-robotiq85:latest
+
+# Inside container, launch simulation
+ros2 launch ur_yt_sim spawn_ur5_camera_gripper_moveit.launch.py 2>&1 | grep -v "Joint.*mimic.*not found"
+
+```
+
+### Building from Source
+```bash
+git clone https://github.com/YOUR_USERNAME/LearnRoboticsWROS.git
+cd LearnRoboticsWROS
+docker build -t ur5-robotiq85:latest .
+```
+
+### Docker Hub
+Image available at: https://hub.docker.com/r/hualde/ur5-robotiq85
+
+### What's Included
+- ROS2 Humble Desktop Full
+- Gazebo simulation
+- MoveIt2 motion planning
+- UR5 robot with Robotiq 85 gripper
+- Camera integration
+- Pick and place capabilities
+
+### System Requirements
+- Ubuntu 22.04 (or WSL2 on Windows)
+- Docker installed
+- X11 for GUI (Gazebo/RViz)
+- GPU drivers for hardware acceleration
+```
+
+Guardar: `Ctrl+O`, `Enter`, `Ctrl+X`
+
+---
+
+## Cuando el build termine exitosamente
+
+Verás algo como:
+```
+ => exporting to image
+ => => exporting layers
+ => => writing image sha256:abc123...
+ => => naming to docker.io/library/ur5-robotiq85:latest
+Successfully built abc123def456
+Successfully tagged ur5-robotiq85:latest

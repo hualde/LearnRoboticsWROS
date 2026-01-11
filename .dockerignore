@@ -1,0 +1,24 @@
+# Build artifacts
+log/
+
+# Git
+.git/
+.github/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# ROS bags
+*.bag
+*.db3
+
+# Documentation (opcional, puedes mantener README.md)
+# *.md
