@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-vision_detector.py - CON TRANSFORMACIONES TF
-Detecta objetos y transforma coordenadas al frame del robot
+vision_detector.py - CON TRANSFORMACIONES TF (SOLO VERDES)
+Detecta objetos VERDES y transforma coordenadas al frame del robot
 """
 
 import rclpy
@@ -58,7 +58,7 @@ class VisionDetector(Node):
         
         self.detection_count = 0
         
-        self.get_logger().info('🔍 Vision Detector con TF iniciado')
+        self.get_logger().info('🔍 Vision Detector con TF iniciado - SOLO OBJETOS VERDES 🟢')
         self.get_logger().info(f'🤖 Frame del robot: {self.robot_frame}')
         self.get_logger().info(f'📷 Frame de cámara: {self.camera_frame}')
     
@@ -77,49 +77,40 @@ class VisionDetector(Node):
         if msg.header.frame_id:
             self.camera_frame = msg.header.frame_id
     
-    def detect_colored_objects(self, image):
-        """Detecta objetos de colores"""
+    def detect_green_objects(self, image):
+        """Detecta SOLO objetos verdes"""
         objects = []
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         
-        color_ranges = {
-            'red': [
-                (np.array([0, 100, 100]), np.array([10, 255, 255])),
-                (np.array([170, 100, 100]), np.array([180, 255, 255]))
-            ],
-            'blue': [(np.array([100, 100, 100]), np.array([130, 255, 255]))],
-            'green': [(np.array([40, 100, 100]), np.array([80, 255, 255]))],
-            'yellow': [(np.array([20, 100, 100]), np.array([35, 255, 255]))],
-            'orange': [(np.array([10, 100, 100]), np.array([20, 255, 255]))]
-        }
+        # SOLO rango verde
+        green_ranges = [(np.array([40, 100, 100]), np.array([80, 255, 255]))]
         
-        for color_name, ranges in color_ranges.items():
-            mask = np.zeros(hsv.shape[:2], dtype=np.uint8)
+        mask = np.zeros(hsv.shape[:2], dtype=np.uint8)
+        
+        for lower, upper in green_ranges:
+            mask = cv2.bitwise_or(mask, cv2.inRange(hsv, lower, upper))
+        
+        kernel = np.ones((5, 5), np.uint8)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+        
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        
+        for contour in contours:
+            area = cv2.contourArea(contour)
             
-            for lower, upper in ranges:
-                mask = cv2.bitwise_or(mask, cv2.inRange(hsv, lower, upper))
-            
-            kernel = np.ones((5, 5), np.uint8)
-            mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-            mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-            
-            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            
-            for contour in contours:
-                area = cv2.contourArea(contour)
-                
-                if area > 300:
-                    M = cv2.moments(contour)
-                    if M['m00'] != 0:
-                        cx = int(M['m10'] / M['m00'])
-                        cy = int(M['m01'] / M['m00'])
-                        
-                        objects.append({
-                            'color': color_name,
-                            'pixel_x': cx,
-                            'pixel_y': cy,
-                            'area': area
-                        })
+            if area > 300:
+                M = cv2.moments(contour)
+                if M['m00'] != 0:
+                    cx = int(M['m10'] / M['m00'])
+                    cy = int(M['m01'] / M['m00'])
+                    
+                    objects.append({
+                        'color': 'green',
+                        'pixel_x': cx,
+                        'pixel_y': cy,
+                        'area': area
+                    })
         
         return objects
     
@@ -207,8 +198,8 @@ class VisionDetector(Node):
             self.get_logger().warn(f'No se pudo transformar: {e}', throttle_duration_sec=2.0)
             return None
     
-    def create_marker(self, obj_id, color_name, x, y, z, frame_id):
-        """Crea marcador en el frame especificado"""
+    def create_marker(self, obj_id, x, y, z, frame_id):
+        """Crea marcador verde"""
         marker = Marker()
         marker.header.frame_id = frame_id
         marker.header.stamp = self.get_clock().now().to_msg()
@@ -227,26 +218,17 @@ class VisionDetector(Node):
         marker.scale.y = 0.05
         marker.scale.z = 0.05
         
-        # Color
-        color_map = {
-            'red': (1.0, 0.0, 0.0),
-            'blue': (0.0, 0.0, 1.0),
-            'green': (0.0, 1.0, 0.0),
-            'yellow': (1.0, 1.0, 0.0),
-            'orange': (1.0, 0.5, 0.0)
-        }
-        
-        rgb = color_map.get(color_name, (0.5, 0.5, 0.5))
-        marker.color.r = rgb[0]
-        marker.color.g = rgb[1]
-        marker.color.b = rgb[2]
+        # Color verde
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
         marker.color.a = 0.9
         
         marker.lifetime.sec = 2
         
         return marker
     
-    def create_text_marker(self, obj_id, color_name, x, y, z, frame_id):
+    def create_text_marker(self, obj_id, x, y, z, frame_id):
         """Crea marcador de texto"""
         marker = Marker()
         marker.header.frame_id = frame_id
@@ -261,7 +243,7 @@ class VisionDetector(Node):
         marker.pose.position.z = float(z) + 0.1  # Un poco arriba
         marker.pose.orientation.w = 1.0
         
-        marker.text = f"{color_name}\\n({x:.2f},{y:.2f},{z:.2f})"
+        marker.text = f"GREEN\n({x:.2f},{y:.2f},{z:.2f})"
         marker.scale.z = 0.04
         
         marker.color.r = 1.0
@@ -274,7 +256,7 @@ class VisionDetector(Node):
         return marker
     
     def process_and_detect(self):
-        """Pipeline principal con transformaciones"""
+        """Pipeline principal con transformaciones - SOLO VERDES"""
         # Verificar datos
         if self.latest_image is None:
             self.get_logger().warn('Esperando imagen RGB...', throttle_duration_sec=3.0)
@@ -288,13 +270,13 @@ class VisionDetector(Node):
             self.get_logger().warn('Esperando camera_info...', throttle_duration_sec=3.0)
             return
         
-        # Detectar objetos
-        objects_2d = self.detect_colored_objects(self.latest_image.copy())
+        # Detectar SOLO objetos verdes
+        objects_2d = self.detect_green_objects(self.latest_image.copy())
         
         if not objects_2d:
             return
         
-        # Procesar cada objeto
+        # Procesar cada objeto verde
         objects_3d = []
         poses = []
         markers = MarkerArray()
@@ -319,7 +301,7 @@ class VisionDetector(Node):
             # 3. Guardar datos
             obj_data = {
                 'id': self.detection_count,
-                'color': obj['color'],
+                'color': 'green',
                 'pixel_x': obj['pixel_x'],
                 'pixel_y': obj['pixel_y'],
                 'area': float(obj['area']),
@@ -350,12 +332,12 @@ class VisionDetector(Node):
             
             # 5. Crear marcadores en frame del robot
             marker = self.create_marker(
-                self.detection_count, obj['color'], 
+                self.detection_count, 
                 x_robot, y_robot, z_robot, 
                 self.robot_frame
             )
             text_marker = self.create_text_marker(
-                self.detection_count, obj['color'], 
+                self.detection_count, 
                 x_robot, y_robot, z_robot, 
                 self.robot_frame
             )
@@ -364,7 +346,7 @@ class VisionDetector(Node):
             
             # 6. Log
             self.get_logger().info(
-                f"✅ {obj['color'].upper()}: "
+                f"✅ 🟢 VERDE: "
                 f"Cámara({x_cam:.3f}, {y_cam:.3f}, {z_cam:.3f}) → "
                 f"Robot({x_robot:.3f}, {y_robot:.3f}, {z_robot:.3f})m"
             )
@@ -388,16 +370,17 @@ class VisionDetector(Node):
             # Marcadores
             self.markers_pub.publish(markers)
             
-            self.get_logger().info(f'📡 Publicados {len(objects_3d)} objetos en frame {self.robot_frame}')
+            self.get_logger().info(f'📡 Publicados {len(objects_3d)} objetos VERDES en frame {self.robot_frame}')
 
 def main(args=None):
     rclpy.init(args=args)
     
     print("=" * 70)
-    print("🎯 VISION DETECTOR - CON TRANSFORMACIONES TF")
+    print("🎯 VISION DETECTOR - SOLO OBJETOS VERDES 🟢")
     print("=" * 70)
+    print("✅ Detecta ÚNICAMENTE objetos verdes")
     print("✅ Transforma coordenadas de cámara → robot")
-    print("✅ Marcadores en frame correcto (base_link)")
+    print("✅ Marcadores verdes en frame correcto (base_link)")
     print("=" * 70)
     
     node = VisionDetector()
@@ -405,7 +388,7 @@ def main(args=None):
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        print("\\n🛑 Deteniendo...")
+        print("\n🛑 Deteniendo...")
     finally:
         node.destroy_node()
         rclpy.shutdown()
