@@ -369,6 +369,18 @@ def main(args=None):
     node.control_gripper(0.0) # Abrir
     node.detach_object()
     
+    # --- FASE 10: VOLVER A CASA (RETURN) ---
+    print("\n🚀 FASE 10: VOLVER (RETURN)")
+    input("Presiona ENTER para volver a READY (haciendo el camino inverso)...")
+    
+    # 10.1 Volver al Waypoint seguro
+    print("... Volviendo a waypoint seguro (X=0.0) ...")
+    node.move_to_pose_lin(0.0, 0.3, 0.6, 0.665, -0.600, 0.310, -0.320)
+    
+    # 10.2 Volver a READY
+    print("... Volviendo a READY ...")
+    node.move_to_joints(ready_angles)
+    
     node.destroy_node()
     rclpy.shutdown()
 
